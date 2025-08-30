@@ -1,0 +1,43 @@
+.explore-category{
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.explore-category h1{
+    font-weight: 500;
+    color: #522906;
+}
+.explore-category-list{
+   display: flex; 
+   align-items: center;
+   gap: 30px;
+   text-align: center;
+   margin: 10px 0px;
+   overflow-x: scroll;
+   overflow-y: hidden; 
+   scrollbar-width: none;  
+}
+
+.explore-category-list-item img {
+    width: 90px;
+    height: 90px;
+    border-radius: 25px;
+    object-fit:fill;
+    display: block;
+}
+.explore-category-list-item p {
+    width: 90px;
+    height: 90px;
+    margin-top: 5px;
+   
+}
+
+.explore-category-list-item :hover{
+    color: #C18E60;
+    cursor: pointer;
+   
+}
+
+
+
