@@ -25,6 +25,7 @@
     border-radius: 25px;
     object-fit:fill;
     display: block;
+    cursor: pointer;
 }
 .explore-category-list-item p {
     width: 90px;
