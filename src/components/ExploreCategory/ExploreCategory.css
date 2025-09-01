@@ -13,10 +13,11 @@
    align-items: center;
    gap: 30px;
    text-align: center;
-   margin: 10px 0px;
    overflow-x: scroll;
    overflow-y: hidden; 
-   scrollbar-width: none;  
+   scrollbar-width: none; 
+   padding-bottom: 0px;
+
 }
 
 .explore-category-list-item img {
@@ -38,6 +39,20 @@
     color: #C18E60;
     cursor: pointer;
    
+}
+.explore-category-list-item img.active{
+border: 2px solid #C18E60;
+padding: 6px;
+
+}
+.explore-category-list-item p.active{
+    color: #C18E60;
+    font-weight: bold;
+    
+    }
+
+.explore-category hr{
+   margin-top: 1px;
 }
 
 

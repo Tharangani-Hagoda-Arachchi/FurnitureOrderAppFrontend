@@ -1,0 +1,16 @@
+.item-card{
+    width: 250px;
+    height: 250px;
+    padding-top: 20px;
+}
+.item-card img{
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+}
+.item-card h3{
+    font-size: 10px;
+}
+.item-card p{
+    font-size: 10px;
+}
