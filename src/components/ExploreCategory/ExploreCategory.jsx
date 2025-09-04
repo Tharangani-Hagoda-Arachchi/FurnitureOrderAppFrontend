@@ -14,9 +14,10 @@ const ExploreCategory = ({selectCategories, setSelectCategories}) => {
    //use state for errors
   const [error, setError] = React.useState(null);
 
-  const categorySelection = (categoryName) =>{
-    setSelectCategories(categoryName);
-     
+  const categorySelection = (categoryName,e) =>{
+    setSelectCategories((prev) =>
+      prev === categoryName? "All" : categoryName
+    );  
   }
 
   useEffect(() => {
