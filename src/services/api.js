@@ -12,3 +12,6 @@ export const getItemsByCategory = (categoryName) => API.get(`/items/${encodeURIC
 
 // get all items
 export const getItems =() => API.get(`/items`)
+
+//get all items according to id
+export const getItemsByID = (itemID) => API.get(`/items/details/${itemID}`);

@@ -4,6 +4,7 @@ import React from 'react'
 import Home from "./pages/Home/Home"
 import Cart from "./pages/Cart/Cart"
 import PlaceOrder from "./pages/PlaceOrder/PlaceOrder"
+import ItemDetail from "./pages/ItemDetails/ItemDetail"
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         <Route path="/" element ={<Home/>}/>
         <Route path="/cart" element ={<Cart/>}/>
         <Route path="/order" element ={<PlaceOrder/>}/>
+        <Route path="/item-detail/:id" element ={<ItemDetail/>}/>
       </Routes>
     </div>
   )
