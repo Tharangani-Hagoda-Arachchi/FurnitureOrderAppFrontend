@@ -22,7 +22,7 @@ const Item = ({ selectCategories }) => {
       getItemsByCategory(selectCategories)
         .then((res) => {
           //console.log("API item Response:", res.data.data);
-          setItems(res.data.data || []);
+          setItems(res.data || []);
           setLoading(false);
         })
         .catch(() => {
@@ -35,7 +35,7 @@ const Item = ({ selectCategories }) => {
       getItems()
         .then((res) => {
           console.log("API all item Response:", res.data.data);
-          setItems(res.data.data || []);
+          setItems(res.data || []);
           setLoading(false);
         })
     }

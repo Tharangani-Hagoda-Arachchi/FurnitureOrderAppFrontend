@@ -25,7 +25,7 @@ const ExploreCategory = ({selectCategories, setSelectCategories}) => {
     getCategories()
     .then ((res) => {
       console.log("API Response:", res.data);
-      setCategories(res.data.data);
+      setCategories(res.data);
       setLoading(false);
     })
     .catch((error) => {

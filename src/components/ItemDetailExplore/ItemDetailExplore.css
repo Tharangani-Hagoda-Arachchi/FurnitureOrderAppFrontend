@@ -72,25 +72,25 @@
 
 }
 
-h2 {
+.item-detail h2 {
   padding-bottom: 30px;
   font-weight: 400;
 }
 
-p {
+.item-detail p {
   font-size: 15px;
   font-weight: 200;
   padding-bottom: 10px;
 }
 
-.price {
+.item-detail .price {
   display: flex;
   align-items: center;
   gap: 10px;
   margin: 8px 0;
 }
 
-.old-price {
+.item-detail .old-price {
   text-decoration: line-through;
   color: #888;
 }
@@ -99,12 +99,12 @@ p {
   font-weight: bold;
 }
 
-.in-stock {
+.item-basic-right .in-stock {
   color: green;
   font-weight: 400;
 }
 
-.out-of-stock {
+.item-basic-right .out-of-stock {
   color: red;
   font-weight: 400;
 }
@@ -119,6 +119,8 @@ p {
 .review-and-ratings {
   display: flex;
   gap: 30px;
+  padding-bottom: 20px;
+  padding-top: 20px;
 }
 
 .review-and-ratings button {
@@ -127,6 +129,7 @@ p {
   background-color: white;
   border-radius: 10px;
   border: 1px solid #A47148;
+  
 }
 
 .color-circle {
@@ -175,7 +178,7 @@ p {
   border-radius: 50%;
 }
 
-.add-cart {
+.item-basic-right .add-cart {
   display: flex;
   gap: 25px;
   padding-top: 20px;
@@ -183,7 +186,7 @@ p {
 
 }
 
-.add-cart-button {
+.item-basic-right .add-cart-button {
   padding-inline: 7px;
   width: 190px;
   background-color: #C18E60;
@@ -192,13 +195,13 @@ p {
 
 }
 
-.quantity {
+.item-basic-right .quantity {
   display: flex;
   align-items: center;
   gap: 5px;
 }
 
-.quantity button {
+.item-basic-right .quantity button {
   border-radius: 15px;
   border: none;
   padding-inline: 2px;
@@ -208,7 +211,7 @@ p {
   font-weight: bold;
 }
 
-.quantity span {
+.item-basic-right .quantity span {
   align-items: center;
   font-size: 13px;
   border: 1px solid rgb(223, 223, 206);

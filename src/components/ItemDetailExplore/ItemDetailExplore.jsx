@@ -28,7 +28,7 @@ const ItemDetailExplore = () => {
     if (!id) return;
     setLoading(true);
     getItemsByID(id)
-      .then(res => setItemDetails(res.data.data)
+      .then(res => setItemDetails(res.data)
       )
       .catch(() => setItemDetails(null))
       .finally(() => setLoading(false))
@@ -90,6 +90,8 @@ const ItemDetailExplore = () => {
             <button className='add-review-button'>Give Review</button>
           </div>
 
+          <p> {itemDetails.itemMaterial}</p>
+          <p> {itemDetails.itemStyle}</p>
           <p> {itemDetails.itemDescription}</p>
 
           {itemDetails.itemColor && itemDetails.itemColor.length > 0 && (
