@@ -3,6 +3,8 @@ import './Login.css'
 import { assets } from '../../assets/assets'
 import { validateForm } from '../../services/authValidation'
 import { loginUser, registerUser } from '../../services/api'
+import { authContext } from "../../context/authContext.jsx";
+
 
 const Login = ({ setShowLogin }) => {
     // for current state
@@ -11,6 +13,8 @@ const Login = ({ setShowLogin }) => {
     const [formData, setFormData] = React.useState({ name: '', email: '', password: '', role: 'customer' })
     //errors
     const [error, setError] = React.useState('')
+
+    const { login } = React.useContext(authContext)
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -38,6 +42,14 @@ const Login = ({ setShowLogin }) => {
                 const payload = { email: formData.email, password: formData.password };
                 const res = await loginUser(payload);
                 console.log("Login response:", res);
+                
+                //store access token
+                const accessToken = res.accessToken; // direct access
+                if (accessToken) {
+                    login(accessToken); // store in context & localStorage
+                } else {
+                    alert("No access token returned from backend");
+                }
             }
             setShowLogin(false);
             alert(`${curentState} successful!`);
