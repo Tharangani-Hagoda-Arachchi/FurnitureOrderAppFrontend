@@ -38,11 +38,11 @@ export const getItems = async () => {
     }
 };
 
-//get all items according to id
+//get items according to id
 export const getItemsByID = async (itemID) => {
     try {
         const response = await API.get(`/items/details/${itemID}`);
-        return response.data;
+        return response.data.data;
     } catch (err) {
         console.error(`Get item by ID "${itemID}" error:`, err);
         throw err;
@@ -62,7 +62,7 @@ export const registerUser = async (data) => {
             headers: { "Content-Type": "application/json" }
         });
         return response.data;
-        
+
     } catch (err) {
         console.error('Register error:', {
             message: err.message,
@@ -83,7 +83,7 @@ export const loginUser = async (data) => {
         };
         const response = await API.post(`/auths/login`, payload, {
             headers: { "Content-Type": "application/json" },
-            withCredentials: true 
+            withCredentials: true
         });
         return response.data;
     } catch (err) {

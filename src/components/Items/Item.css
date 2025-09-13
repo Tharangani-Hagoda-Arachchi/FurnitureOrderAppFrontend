@@ -1,15 +1,16 @@
-.item-title{
+.item-title {
     font-weight: 500;
     color: #522906;
     margin-top: 40px;
 }
 
-.item-list{
+.item-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(230px,1fr));
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
     row-gap: 20px;
 }
-.item-card{
+
+.item-card {
     width: 220px;
     height: 95%;
     box-shadow: 0px 0px 10px #00000015;
@@ -17,68 +18,83 @@
     margin-top: 30px;
     transition: 0.3s;
     animation: fadeIn;
-    cursor: pointer;
+
 }
-.item-card img{
+
+.item-card img {
     width: 100%;
     height: 200px;
     border-radius: 10px 10px 0px 0px;
-   
+    cursor: pointer;
+
 }
-.item-card h3{
+
+.item-card h3 {
     padding-top: 10px;
     font-size: 10px;
     padding-left: 10px;
 }
-.item-card p{
+
+.item-card p {
     font-size: 10px;
     padding: 2px;
     padding-left: 10px;
 }
-.add-cart{
+
+.discount {
+    color: red;
+}
+
+.add-cart {
     display: flex;
     gap: 25px;
     padding-top: 10px;
     padding-left: 10px;
 
 }
-.add-cart-button{
+
+.add-cart-button {
     padding-inline: 7px;
+    height: 30px;
     background-color: #C18E60;
     border-radius: 10px;
     border: none;
-    
+    cursor: pointer;
+
 }
+
 .quantity {
     display: flex;
     align-items: center;
     gap: 5px;
 }
 
-.quantity button{
+.quantity button {
     border-radius: 15px;
     border: none;
     padding-inline: 2px;
     width: 30px;
     height: 30px;
-    background-color:rgb(223, 223, 206);
+    background-color: rgb(223, 223, 206);
     font-weight: bold;
+    cursor: pointer;
 }
-.quantity span{
+
+.quantity span {
     align-items: center;
     font-size: 13px;
     border: 1px solid rgb(223, 223, 206);
     padding-inline: 4px;
 
-  
+
 }
+
 .in-stock {
     color: green;
     font-weight: bold;
-  }
-  
-  .out-of-stock {
+}
+
+.out-of-stock {
     color: red;
     font-weight: bold;
-  }
-
+}

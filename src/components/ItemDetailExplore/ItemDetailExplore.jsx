@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { getItemsByID } from '../../services/api';
 import { useParams } from 'react-router-dom'
 import RatingStar from '../RatingStar/RatingStar';
@@ -10,6 +10,7 @@ import 'swiper/css/pagination';
 import { Navigation, Pagination } from 'swiper/modules';
 
 import './ItemDetailExplore.css'
+import { authContext } from '../../context/authContext';
 
 const ItemDetailExplore = () => {
 
@@ -17,6 +18,9 @@ const ItemDetailExplore = () => {
   const [itemDetails, setItemDetails] = useState(null);
   const [loading, setLoading] = useState(false);
   const [selectedColor, setSelectedColor] = useState(null);
+
+  //logins state(token)
+  const { token } = useContext(authContext)
 
   // calculate final price
   const calculatefinalprice = (price, discount) => {
@@ -28,7 +32,7 @@ const ItemDetailExplore = () => {
     if (!id) return;
     setLoading(true);
     getItemsByID(id)
-      .then(res => setItemDetails(res.data)
+      .then(res => setItemDetails(res)
       )
       .catch(() => setItemDetails(null))
       .finally(() => setLoading(false))
@@ -86,8 +90,8 @@ const ItemDetailExplore = () => {
 
           <div className="review-and-ratings">
             <RatingStar ratings={itemDetails.itemRatings} />
-            <button className='add-ratings-button'>Give Ratings</button>
-            <button className='add-review-button'>Give Review</button>
+            <button className='add-ratings-button' disabled={!token}>Give Ratings</button>
+            <button className='add-review-button' disabled={!token}>Give Review</button>
           </div>
 
           <p> {itemDetails.itemMaterial}</p>
@@ -121,11 +125,15 @@ const ItemDetailExplore = () => {
           )}
 
           <div className="add-cart">
-            <button className='add-cart-button'>Add to cart</button>
+            <button className='add-cart-button'
+              disabled={!token || itemDetails.itemAvailability !== "available"}
+              title={!token ? "Login to add to cart" : itemDetails.itemAvailability !== "available" ? "Out of stock" : ""}>
+              Add to cart
+            </button>
             <div className="quantity">
-              <button className='add'>+</button>
+              <button className='add' disabled={!token || itemDetails.itemAvailability !== "available"}>+</button>
               <span>0</span>
-              <button className='minus'>-</button>
+              <button className='minus' disabled={!token || itemDetails.itemAvailability !== "available"}>-</button>
             </div>
           </div>
         </div>
