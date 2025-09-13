@@ -2,6 +2,7 @@ import axios from 'axios'
 
 const API = axios.create({
     baseURL: 'http://localhost:4000/api',
+
 });
 
 //get all categories
@@ -61,6 +62,7 @@ export const registerUser = async (data) => {
             headers: { "Content-Type": "application/json" }
         });
         return response.data;
+        
     } catch (err) {
         console.error('Register error:', {
             message: err.message,
@@ -80,11 +82,30 @@ export const loginUser = async (data) => {
             password: data.password,
         };
         const response = await API.post(`/auths/login`, payload, {
-            headers: { "Content-Type": "application/json" }
+            headers: { "Content-Type": "application/json" },
+            withCredentials: true 
         });
         return response.data;
     } catch (err) {
         console.error('login error:', {
+            message: err.message,
+            status: err.response?.status,
+            data: err.response?.data,
+        });
+        throw err;
+    }
+};
+
+// logout
+export const logoutUser = async () => {
+    try {
+        const response = await API.post(`/auths/logout`,
+            {},
+            { withCredentials: true }
+        );
+        return response.data;
+    } catch (err) {
+        console.error('Logout error:', {
             message: err.message,
             status: err.response?.status,
             data: err.response?.data,

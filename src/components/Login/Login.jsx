@@ -42,6 +42,7 @@ const Login = ({ setShowLogin }) => {
                 const payload = { email: formData.email, password: formData.password };
                 const res = await loginUser(payload);
                 console.log("Login response:", res);
+              
                 
                 //store access token
                 const accessToken = res.accessToken; // direct access

@@ -1,5 +1,6 @@
 // src/context/authContext.jsx
 import React, { useState, useEffect } from "react";
+import { loginUser, logoutUser } from "../services/api";
 
 export const authContext = React.createContext();
 
@@ -16,9 +17,15 @@ export const AuthProvider = ({ children }) => {
     setToken(accessToken);
   };
 
-  const logout = () => {
-    localStorage.removeItem("accessToken");
-    setToken(null);
+const logout = async () => {
+    try {
+      await logoutUser(); // calling backend
+    } catch (err) {
+      console.error("Logout failed:", err);
+    } finally {
+      localStorage.removeItem("accessToken");
+      setToken(null);
+    }
   };
 
   const isLoggedIn = !!token;

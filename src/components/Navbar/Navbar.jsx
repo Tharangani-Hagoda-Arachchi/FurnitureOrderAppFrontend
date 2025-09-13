@@ -32,7 +32,7 @@ const Navbar = ({ setShowLogin }) => {
 
         {
           token ? (
-            <button className="signin" >Logout</button>
+            <button className="signin" onClick={logout} >Logout</button>
           ) : (
 
             <button className="signin" onClick={() => setShowLogin(true)}>Sign in</button>
