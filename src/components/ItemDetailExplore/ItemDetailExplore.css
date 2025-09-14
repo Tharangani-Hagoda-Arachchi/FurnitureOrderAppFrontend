@@ -3,6 +3,7 @@
   flex-direction: column;
   gap: 20px;
   padding: 20px;
+  font-size: 13px;
 
 }
 
@@ -74,11 +75,12 @@
 
 .item-detail h2 {
   padding-bottom: 30px;
-  font-weight: 400;
+  font-weight: 600;
+  font-size: 18px;
 }
 
 .item-detail p {
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 200;
   padding-bottom: 10px;
 }

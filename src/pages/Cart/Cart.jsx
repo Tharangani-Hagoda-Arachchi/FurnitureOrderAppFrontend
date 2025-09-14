@@ -43,6 +43,7 @@ const Cart = () => {
 
   return (
     <div className='cart-content'>
+      <h1>Cart</h1>
       <div className="cart-items">
         <div className="cart-items-title">
           <p>Items</p>

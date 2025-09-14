@@ -6,20 +6,24 @@ import { authContext } from "../../context/authContext.jsx";
 import { cartContext } from '../../context/cartContext.jsx';
 
 
-const Navbar = ({ setShowLogin }) => {
+const Navbar = ({ setShowLogin, hideMenu = false }) => {
   const [menue, setMenue] = React.useState("Home")
   const { token, logout } = React.useContext(authContext);
   const { totalQuantity } = React.useContext(cartContext);
 
   return (
     <div className='navbar'>
-      <img className='logo' src={assets.logo} alt="URBANNEST" />
-      <ul className="navbar-menues">
-        <li onClick={() => setMenue("Home")} className={menue === "Home" ? "active" : ""}>Home</li>
-        <li onClick={() => setMenue("Category")} className={menue === "Category" ? "active" : ""}>Category</li>
-        <li onClick={() => setMenue("About")} className={menue === "About" ? "active" : ""}>About</li>
-        <li onClick={() => setMenue("Contact")} className={menue === "Contact" ? "active" : ""}>Contact</li>
-      </ul>
+      <Link to='/'> <img className='logo' src={assets.logo} alt="URBANNEST" /></Link>
+      {!hideMenu && (
+        <ul className="navbar-menues">
+          <li onClick={() => setMenue("Home")} className={menue === "Home" ? "active" : ""}> <a href='#home'>Home</a></li>
+          <li onClick={() => setMenue("Category")} className={menue === "Category" ? "active" : ""}><a href='#category'>Category</a></li>
+          <li onClick={() => setMenue("About")} className={menue === "About" ? "active" : ""}><a href='#aboutus'>About</a></li>
+          <li onClick={() => setMenue("Contact")} className={menue === "Contact" ? "active" : ""}><a href='#footer'>Contact</a></li>
+        </ul>
+
+      )}
+
       <div className="navbar-right">
         <img src={assets.searchIcon} alt="Search" className="search" />
         {

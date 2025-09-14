@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom"
+import { Route, Routes, useLocation } from "react-router-dom"
 import Navbar from "./components/Navbar/Navbar"
 import React, { useContext } from 'react'
 import Home from "./pages/Home/Home"
@@ -12,20 +12,26 @@ import Footer from "./components/Footer/Footer"
 const App = () => {
   //useState for popup login form
   const [showLogin, setShowLogin] = React.useState(false)
+  const location = useLocation();
+
+
+  const minimalNavbarPaths = ["/cart", "/order"];
+  // Also hide for any /item-detail/:id page
+  const isMinimalNavbar = minimalNavbarPaths.includes(location.pathname) || location.pathname.startsWith("/item-detail");
 
   return (
     <>
-      {showLogin ? <Login setShowLogin={setShowLogin} /> : <></>}
+      {showLogin && <Login setShowLogin={setShowLogin} />}
       <div className="app">
-        <Navbar setShowLogin={setShowLogin} />
+        < Navbar setShowLogin={setShowLogin} hideMenu={isMinimalNavbar}/>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home/>} />
           <Route path="/cart" element={<PrivateRoute><Cart /></PrivateRoute>} />
-          <Route path="/order" element={<PlaceOrder />} />
+          <Route path="/order" element={<PrivateRoute><PlaceOrder /></PrivateRoute>} />
           <Route path="/item-detail/:id" element={<ItemDetail />} />
         </Routes>
       </div>
-      <Footer/>
+      <Footer id='footer' />
 
     </>
   )

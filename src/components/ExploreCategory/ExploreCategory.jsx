@@ -3,7 +3,7 @@ import { getCategories } from '../../services/api.js';
 import './ExploreCategory.css';
 
 
-const ExploreCategory = ({selectCategories, setSelectCategories}) => {
+const ExploreCategory = ({ selectCategories, setSelectCategories}) => {
 
   //use state for backend data 
   const [categories, setCategories] = React.useState([]);
@@ -39,7 +39,8 @@ const ExploreCategory = ({selectCategories, setSelectCategories}) => {
   if (error) return <p style={{ color: 'red' }}>{error}</p>;
 
   return (
-    <div className="explore-category" id='explore-category'>
+    <div id='category'>
+          <div className="explore-category" id='explore-category'>
       <h1>Explore Our Category </h1> 
       <p className="explore-category-text">Explore our diverse furniture categories, each offering thoughtfully designed pieces to transform your space into a home you love. </p>
       <div className="explore-category-list" >
@@ -56,6 +57,9 @@ const ExploreCategory = ({selectCategories, setSelectCategories}) => {
       <hr />
 
     </div>
+
+    </div>
+
   );
 
 };

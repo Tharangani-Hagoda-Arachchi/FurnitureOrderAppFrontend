@@ -7,6 +7,7 @@
 
 .navbar .logo {
     width: 100px;
+    cursor: pointer;
 }
 
 .navbar .navbar-menues {
@@ -76,4 +77,7 @@
     align-items: center;
     justify-content: center;
 
+}
+.navbar-menues a{
+    text-decoration: none;
 }
