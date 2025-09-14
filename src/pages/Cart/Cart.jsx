@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import './Cart.css'
 import { cartContext } from '../../context/cartContext'
 import { getItemsByID } from '../../services/api'
+import { useNavigate } from 'react-router-dom'
 
 const Cart = () => {
 
@@ -11,6 +12,8 @@ const Cart = () => {
   const [totalPrice, setTotalPrice] = useState(0);
 
   const DELIVERY_FEE = 2000;
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -89,7 +92,7 @@ const Cart = () => {
                 <b>LKR {fulltotal}</b>
               </div>
             </div>
-            <button className="proced-checkout">PROCEED TO CHECKOUT </button>
+            <button className="proced-checkout" onClick={() => navigate('/order',{state:{subtotal: totalPrice.toFixed(2),deliveryFee: DELIVERY_FEE.toFixed(2), fulltotal:fulltotal,},})}>PROCEED TO CHECKOUT </button>
           </div>
           <div className="cart-prmocode">
             <div>
