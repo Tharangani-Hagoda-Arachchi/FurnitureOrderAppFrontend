@@ -25,13 +25,16 @@
     border-radius: 5px;
 }
 
-.select-item-color {
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    border: 1px solid #ccc;
-    display: inline-block;
+.cart-color-circle {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  vertical-align: middle;
+  margin-left: 5px;
 }
+
 
 .remove {
     background: none;

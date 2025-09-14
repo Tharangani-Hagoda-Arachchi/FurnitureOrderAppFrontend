@@ -43,6 +43,21 @@
     padding: 2px;
     padding-left: 10px;
 }
+.item-card .price {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 2px 0;
+}
+
+.item-card .old-price {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.new-price {
+  font-weight: bold;
+}
 
 .discount {
     color: red;

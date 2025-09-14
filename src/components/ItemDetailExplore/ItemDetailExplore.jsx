@@ -11,6 +11,7 @@ import { Navigation, Pagination } from 'swiper/modules';
 
 import './ItemDetailExplore.css'
 import { authContext } from '../../context/authContext';
+import { cartContext } from '../../context/cartContext';
 
 const ItemDetailExplore = () => {
 
@@ -22,11 +23,22 @@ const ItemDetailExplore = () => {
   //logins state(token)
   const { token } = useContext(authContext)
 
+  //cart context(functions)
+  const { cart, addToCart, increaseQty, decreaseQty } = useContext(cartContext)
+
+    // Check if item already exists in cart
+  const cartItem = cart[id] || { qty: 0, color: null };
+
   // calculate final price
   const calculatefinalprice = (price, discount) => {
     if (!discount || discount < 0) return price;
     return (price - discount).toFixed(2)
   }
+
+  // Set selected color from cart if it exists
+  useEffect(() => {
+    if (cartItem.color) setSelectedColor(cartItem.color);
+  }, [cartItem.color]);
 
   useEffect(() => {
     if (!id) return;
@@ -37,6 +49,17 @@ const ItemDetailExplore = () => {
       .catch(() => setItemDetails(null))
       .finally(() => setLoading(false))
   }, [id]);
+
+  //add cart handle function
+  const handleAddToCart = () => {
+    if (!itemDetails) return;
+    const finalPrice = calculatefinalprice(
+      itemDetails.itemPrice,
+      itemDetails.itemDiscount
+    );
+    addToCart(id, finalPrice, selectedColor );
+  };
+
 
   if (loading) return <p style={{ color: 'orange' }}>Loading items...</p>;
   if (!itemDetails) return <p>Item not found</p>;
@@ -127,13 +150,13 @@ const ItemDetailExplore = () => {
           <div className="add-cart">
             <button className='add-cart-button'
               disabled={!token || itemDetails.itemAvailability !== "available"}
-              title={!token ? "Login to add to cart" : itemDetails.itemAvailability !== "available" ? "Out of stock" : ""}>
+              title={!token ? "Login to add to cart" : itemDetails.itemAvailability !== "available" ? "Out of stock" : ""} onClick={handleAddToCart}>
               Add to cart
             </button>
             <div className="quantity">
-              <button className='add' disabled={!token || itemDetails.itemAvailability !== "available"}>+</button>
-              <span>0</span>
-              <button className='minus' disabled={!token || itemDetails.itemAvailability !== "available"}>-</button>
+              <button className='add' disabled={!token || itemDetails.itemAvailability !== "available"} onClick={() => increaseQty(id)}>+</button>
+              <span>{cartItem.qty}</span>
+              <button className='minus' disabled={!token || itemDetails.itemAvailability !== "available"} onClick={() => decreaseQty(id)}>-</button>
             </div>
           </div>
         </div>

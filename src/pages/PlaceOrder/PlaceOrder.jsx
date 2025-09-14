@@ -14,7 +14,7 @@ const PlaceOrder = () => {
           <input type="text" placeholder='First Name' required />
           <input type="text" placeholder='Last Name' required />
         </div>
-        <input type="text" placeholder='Email Addresss' required />
+        <input type="email" placeholder='Email Addresss' required />
         <input type="text" placeholder='Adress' required />
         <div className="field">
           <input type="text" placeholder='City' required />

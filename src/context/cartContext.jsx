@@ -11,7 +11,7 @@ export const CartProvider = ({ children }) => {
     //load cart from local storage when use change
     useEffect(() => {
         try {
-            if (!storageKey) return; 
+            if (!storageKey) return;
             const saved = localStorage.getItem(storageKey);
             setCart(saved ? JSON.parse(saved) : {});
         } catch {
@@ -29,33 +29,45 @@ export const CartProvider = ({ children }) => {
     }, [cart, storageKey, userId]);
 
     // Add item to cart
-    const addToCart = (itemID) => {
+    const addToCart = (itemID, price, color) => {
 
-        setCart(prev => ({
-            ...prev,
-            [itemID]: prev[itemID] ? prev[itemID] + 1 : 1,
-
-
-        }));
+        setCart((prev) => {
+            if (prev[itemID]) {
+                return {
+                    ...prev,
+                    [itemID]: {
+                        ...prev[itemID],
+                        qty: prev[itemID].qty + 1,
+                        color: color || prev[itemID].color, // update only if  color passed
+                    },
+                };
+            } else {
+                return {
+                    ...prev,
+                    [itemID]: { qty: 1, price: Number(price), color: color || null },
+                };
+            }
+        });
     };
 
     // Increase quantity
     const increaseQty = (itemID) => {
         setCart(prev => ({
             ...prev,
-            [itemID]: prev[itemID] + 1
+            [itemID]: { ...prev[itemID], qty: prev[itemID].qty + 1 }
         }));
     };
 
     // Decrease quantity
     const decreaseQty = (itemID) => {
         setCart(prev => {
-            const currentQty = prev[itemID];
+            if (!prev[itemID]) return prev;
+            const currentQty = prev[itemID].qty;
             if (currentQty <= 1) {
                 const { [itemID]: _, ...rest } = prev;
                 return rest;
             }
-            return { ...prev, [itemID]: currentQty - 1 };
+            return { ...prev, [itemID]: { ...prev[itemID], qty: currentQty - 1 } };
         });
     };
 
@@ -68,7 +80,7 @@ export const CartProvider = ({ children }) => {
     };
 
     // Total items count
-    const totalQuantity = Object.values(cart).reduce((acc, qty) => acc + qty, 0);
+    const totalQuantity = Object.values(cart).reduce((acc, item) => acc + item.qty, 0);
 
 
     return (
