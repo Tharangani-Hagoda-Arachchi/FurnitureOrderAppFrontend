@@ -1,3 +1,6 @@
+.category-items{
+    padding-bottom: 80px;
+}
 .item-title {
     font-weight: 500;
     color: #522906;
@@ -97,4 +100,7 @@
 .out-of-stock {
     color: red;
     font-weight: bold;
+}
+hr{
+     margin-top: 1px;
 }

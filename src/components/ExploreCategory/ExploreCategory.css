@@ -3,6 +3,7 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    font-size: 13px;
 }
 .explore-category h1{
     font-weight: 500;
@@ -32,7 +33,7 @@
     width: 80px;
     height: 80px;
     margin-top: 5px;
-    font-weight: 200;
+    font-size: 13px;
    
 }
 

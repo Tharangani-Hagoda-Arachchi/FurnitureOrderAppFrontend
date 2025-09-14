@@ -53,7 +53,8 @@ const Item = ({ selectCategories }) => {
   if (loading) return <p style={{ color: 'orange' }}>Loading items...</p>;
 
   return (
-    <div className="category-items">
+    <div>
+          <div className="category-items">
       <h1 className='item-title'>Furniture Items</h1>
       {items.length > 0 ? (
         <div className="item-list">
@@ -95,7 +96,11 @@ const Item = ({ selectCategories }) => {
       ) : (
         selectCategories !== "All" && <p>No items found in this category</p>
       )}
+      
     </div>
+    <hr />
+    </div>
+
   )
 }
 

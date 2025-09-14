@@ -7,6 +7,7 @@ import PlaceOrder from "./pages/PlaceOrder/PlaceOrder"
 import ItemDetail from "./pages/ItemDetails/ItemDetail"
 import Login from "./components/Login/Login"
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute"
+import Footer from "./components/Footer/Footer"
 
 const App = () => {
   //useState for popup login form
@@ -24,6 +25,7 @@ const App = () => {
           <Route path="/item-detail/:id" element={<ItemDetail />} />
         </Routes>
       </div>
+      <Footer/>
 
     </>
   )

@@ -27,7 +27,7 @@ createRoot(document.getElementById('root')).render(
       <AuthProvider>
         <AppWithCart />
       </AuthProvider>
-    </BrowserRouter>,
+    </BrowserRouter>
   </StrictMode>
 
 )

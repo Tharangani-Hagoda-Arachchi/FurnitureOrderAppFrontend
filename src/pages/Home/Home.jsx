@@ -3,6 +3,7 @@ import './Home.css'
 import Header from '../../components/Header/Header.jsx'
 import ExploreCategory from '../../components/ExploreCategory/ExploreCategory.jsx'
 import Item from '../../components/Items/Item'
+import Aboutus from '../../components/Aboutus/Aboutus.jsx'
 
 const Home = () => {
   
@@ -12,6 +13,7 @@ const Home = () => {
       <Header/>
       <ExploreCategory selectCategories = {selectCategories} setSelectCategories = {setSelectCategories}/>
       <Item selectCategories={selectCategories}/>
+      <Aboutus/>
     </div>
   )
 }
